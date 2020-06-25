@@ -1,7 +1,10 @@
 import 'dart:async';
 
-import 'package:crib_hunter/Screens/viewPostingPage.dart';
+import 'package:crib_hunter/Screens/conversationPage.dart';
+import 'package:crib_hunter/Screens/createPostingPage.dart';
+import 'package:crib_hunter/Screens/hostHomePage.dart';
 
+import 'bookPostingPage.dart';
 import 'personalInfoPage.dart';
 import 'package:flutter/material.dart';
 import 'package:crib_hunter/Models/appConstants.dart';
@@ -30,7 +33,10 @@ class MyApp extends StatelessWidget {
         GuestHomePage.routeName: (context) => GuestHomePage(),
         PersonalInfoPage.routeName: (context) => PersonalInfoPage(),
         ViewProfilePage.routeName: (context) => ViewProfilePage(),
-        ViewPostingPage.routeName: (context) => ViewPostingPage(),
+        BookPostingPage.routeName: (context) => BookPostingPage(),
+        ConversationPage.routeName: (context) => ConversationPage(),
+        HostHomePage.routeName: (context) => HostHomePage(),
+        CreatePostingPage.routeName: (context) => CreatePostingPage(),
       },
     );
   }
@@ -46,7 +52,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 2), () {
       Navigator.pushNamed(context, LoginPage.routeName);
     });
 

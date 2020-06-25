@@ -1,3 +1,4 @@
+import 'package:crib_hunter/Models/postingObjects.dart';
 import 'package:crib_hunter/Screens/viewPostingPage.dart';
 import 'package:crib_hunter/Views/gridWidgets.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,11 @@ class _SavedPageState extends State<SavedPage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 50, 25, 0),
+      padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
       child: GridView.builder(
         physics: ScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 2,
+        itemCount: AppConstants.currentUser.savedPostings.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 15,
@@ -26,15 +27,23 @@ class _SavedPageState extends State<SavedPage> {
           childAspectRatio: 3 / 4,
         ),
         itemBuilder: (context, index) {
+          Posting currentPosting =
+              AppConstants.currentUser.savedPostings[index];
           return Stack(
             children: [
               InkResponse(
                 enableFeedback: true,
-                child: PostingGridTile(),
+                child: PostingGridTile(
+                  posting: currentPosting,
+                ),
                 onTap: () {
-                  Navigator.pushNamed(
+                  Navigator.push(
                     context,
-                    ViewPostingPage.routeName,
+                    MaterialPageRoute(
+                      builder: (context) => ViewPostingPage(
+                        posting: currentPosting,
+                      ),
+                    ),
                   );
                 },
               ),

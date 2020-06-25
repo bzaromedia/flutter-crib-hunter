@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "403723414132",
+    "firebase_url": "https://crib-hunter-1579464951160.firebaseio.com",
+    "project_id": "crib-hunter-1579464951160",
+    "storage_bucket": "crib-hunter-1579464951160.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403723414132:android:c10e54643d4ee2b99e3f21",
+        "android_client_info": {
+          "package_name": "com.supergenericapps.cribHunter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403723414132-b1e3ufqek05622c4app75i735u1q6ham.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJuhZV6rnkJPlV3k9rzpGUld68NTwPI4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403723414132-b1e3ufqek05622c4app75i735u1q6ham.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "403723414132-v3kub7okerj9ndfpt89b4irnj2mjdj4p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.supergenericapps.cribHunter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

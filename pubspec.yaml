@@ -14,7 +14,7 @@ description: A Garner Flutter application. A way to connect hosts with guests an
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -25,6 +25,12 @@ dependencies:
   cupertino_icons: ^0.1.2
   auto_size_text: ^2.1.0
   flutter_rating: ^0.0.2
+  google_maps_flutter: ^0.5.21+15
+  geolocator: ^5.2.1
+  firebase_core: ^0.4.0+1
+  firebase_auth: ^0.16.1
+  cloud_firestore: ^0.13.7
+  firebase_storage: ^3.0.4
 
 dev_dependencies:
   flutter_test:

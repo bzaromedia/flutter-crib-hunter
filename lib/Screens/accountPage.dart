@@ -1,3 +1,5 @@
+import 'package:crib_hunter/Screens/guestHomePage.dart';
+import 'package:crib_hunter/Screens/hostHomePage.dart';
 import 'package:crib_hunter/Screens/viewProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -6,16 +8,45 @@ import 'personalInfoPage.dart';
 
 import 'package:crib_hunter/Models/appConstants.dart';
 
-class ProfilePage extends StatefulWidget {
-  ProfilePage({Key key}) : super(key: key);
+class AccountPage extends StatefulWidget {
+  AccountPage({Key key}) : super(key: key);
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _AccountPageState createState() => _AccountPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _AccountPageState extends State<AccountPage> {
+  String _hostingTitle = 'To Host Dashboard';
+
   void _logout() {
     Navigator.pushNamed(context, LoginPage.routeName);
+  }
+
+  void _changeHosting() {
+    if (AppConstants.currentUser.isCurrentHosting) {
+      AppConstants.currentUser.isCurrentHosting = false;
+      Navigator.pushNamed(
+        context,
+        GuestHomePage.routeName,
+      );
+    } else {
+      AppConstants.currentUser.isCurrentHosting = true;
+      Navigator.pushNamed(
+        context,
+        HostHomePage.routeName,
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    if (AppConstants.currentUser.isCurrentHosting) {
+      _hostingTitle = 'To Guest Dashboard';
+    } else {
+      _hostingTitle = 'To Host Dashboard';
+    }
+
+    super.initState();
   }
 
   @override
@@ -33,14 +64,22 @@ class _ProfilePageState extends State<ProfilePage> {
               children: <Widget>[
                 MaterialButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, ViewProfilePage.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ViewProfilePage(
+                          contact:
+                              AppConstants.currentUser.createContactFromUser(),
+                        ),
+                      ),
+                    );
                   },
                   child: CircleAvatar(
                     backgroundColor: Colors.black,
-                    radius: MediaQuery.of(context).size.width / 10.5,
+                    radius: MediaQuery.of(context).size.width / 9.5,
                     child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/profile3.png'),
-                      radius: MediaQuery.of(context).size.width / 10.8,
+                      backgroundImage: AppConstants.currentUser.displayImage,
+                      radius: MediaQuery.of(context).size.width / 10,
                     ),
                   ),
                 ),
@@ -50,16 +89,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       AutoSizeText(
-                        'John Doe',
+                        AppConstants.currentUser.getFullName(),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 22,
+                          fontSize: 20,
                         ),
                       ),
                       AutoSizeText(
-                        'supergenericapps@gmail.com',
+                        AppConstants.currentUser.email,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 15,
                         ),
                       ),
                     ],
@@ -83,9 +122,9 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               MaterialButton(
                 height: MediaQuery.of(context).size.height / 11.0,
-                onPressed: () {},
+                onPressed: _changeHosting,
                 child: ProfilePageListTile(
-                  text: 'Become a Host',
+                  text: _hostingTitle,
                   iconData: Icons.hotel,
                 ),
               ),

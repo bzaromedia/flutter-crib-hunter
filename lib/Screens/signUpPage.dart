@@ -1,7 +1,6 @@
 import 'guestHomePage.dart';
 import 'package:crib_hunter/Views/textWidgets.dart';
 import 'package:flutter/material.dart';
-import 'package:crib_hunter/Models/appConstants.dart';
 
 class SignUpPage extends StatefulWidget {
   static final String routeName = '/signUpPageRoute';

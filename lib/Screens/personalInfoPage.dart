@@ -14,8 +14,32 @@ class PersonalInfoPage extends StatefulWidget {
 }
 
 class _PersonalInfoPageState extends State<PersonalInfoPage> {
+  TextEditingController _firstNameController;
+  TextEditingController _lastNameController;
+  TextEditingController _emailController;
+  TextEditingController _cityController;
+  TextEditingController _countryController;
+  TextEditingController _bioController;
+
   void _saveInfo() {
     Navigator.pushNamed(context, GuestHomePage.routeName);
+  }
+
+  @override
+  void initState() {
+    _firstNameController =
+        TextEditingController(text: AppConstants.currentUser.firstName);
+    _lastNameController =
+        TextEditingController(text: AppConstants.currentUser.lastName);
+    _emailController =
+        TextEditingController(text: AppConstants.currentUser.email);
+    _cityController =
+        TextEditingController(text: AppConstants.currentUser.city);
+    _countryController =
+        TextEditingController(text: AppConstants.currentUser.country);
+    _bioController = TextEditingController(text: AppConstants.currentUser.bio);
+
+    super.initState();
   }
 
   @override
@@ -52,6 +76,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
+                          controller: _firstNameController,
                         ),
                       ),
                       Padding(
@@ -63,6 +88,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
+                          controller: _lastNameController,
                         ),
                       ),
                       Padding(
@@ -74,17 +100,8 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 25.0),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                          ),
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
+                          enabled: false,
+                          controller: _emailController,
                         ),
                       ),
                       Padding(
@@ -96,6 +113,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
+                          controller: _cityController,
                         ),
                       ),
                       Padding(
@@ -107,6 +125,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
+                          controller: _countryController,
                         ),
                       ),
                       Padding(
@@ -119,6 +138,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                             fontSize: 15.0,
                           ),
                           maxLines: 3,
+                          controller: _bioController,
                         ),
                       ),
                     ],
@@ -132,8 +152,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                       backgroundColor: Colors.black,
                       radius: MediaQuery.of(context).size.width / 4.8,
                       child: CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/profile3.png'),
+                        backgroundImage: AppConstants.currentUser.displayImage,
                         radius: MediaQuery.of(context).size.width / 4.9,
                       ),
                     ),

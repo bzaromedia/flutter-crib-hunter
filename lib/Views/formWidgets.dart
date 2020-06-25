@@ -15,7 +15,7 @@ class _ReviewFormState extends State<ReviewForm> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.grey[200],
+          color: Colors.grey[900],
           width: 2.0,
         ),
         borderRadius: BorderRadius.circular(10.0),
@@ -44,7 +44,7 @@ class _ReviewFormState extends State<ReviewForm> {
                       size: 33.0,
                       starCount: 5,
                       color: AppConstants.selectedIconColor,
-                      borderColor: Colors.grey[400],
+                      borderColor: Colors.grey[500],
                       onRatingChanged: (rating) {},
                     ),
                   ),

@@ -1,37 +1,34 @@
+import 'package:crib_hunter/Screens/bookingsPage.dart';
+import 'package:crib_hunter/Screens/myPostingsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:crib_hunter/Views/textWidgets.dart';
 import 'package:crib_hunter/Models/appConstants.dart';
 
 import 'accountPage.dart';
-import 'explorePage.dart';
 import 'inboxPage.dart';
-import 'savedPage.dart';
-import 'tripsPage.dart';
 
-class GuestHomePage extends StatefulWidget {
-  static final String routeName = '/guestHomePageRoute';
+class HostHomePage extends StatefulWidget {
+  static final String routeName = '/hostHomePageRoute';
 
-  GuestHomePage({Key key}) : super(key: key);
+  HostHomePage({Key key}) : super(key: key);
 
   @override
-  _GuestHomePageState createState() => _GuestHomePageState();
+  _HostHomePageState createState() => _HostHomePageState();
 }
 
-class _GuestHomePageState extends State<GuestHomePage> {
-  int _selectedIndex = 4;
+class _HostHomePageState extends State<HostHomePage> {
+  int _selectedIndex = 3;
 
   final List<String> _pageTitles = [
-    'Explore',
-    'Saved',
-    'Trips',
+    'Bookings',
+    'My Postings',
     'Inbox',
     'Profile',
   ];
 
   final List<Widget> _pages = [
-    ExplorePage(),
-    SavedPage(),
-    TripsPage(),
+    BookingsPage(),
+    MyPostingsPage(),
     InboxPage(),
     AccountPage(),
   ];
@@ -76,11 +73,10 @@ class _GuestHomePageState extends State<GuestHomePage> {
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
-          _buildNavigationItem(0, Icons.search, _pageTitles[0]),
-          _buildNavigationItem(1, Icons.favorite_border, _pageTitles[1]),
-          _buildNavigationItem(2, Icons.hotel, _pageTitles[2]),
-          _buildNavigationItem(3, Icons.message, _pageTitles[3]),
-          _buildNavigationItem(4, Icons.person_outline, _pageTitles[4]),
+          _buildNavigationItem(0, Icons.calendar_today, _pageTitles[0]),
+          _buildNavigationItem(1, Icons.home, _pageTitles[1]),
+          _buildNavigationItem(2, Icons.message, _pageTitles[2]),
+          _buildNavigationItem(3, Icons.person_outline, _pageTitles[3]),
         ],
       ),
     );

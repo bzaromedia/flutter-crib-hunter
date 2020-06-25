@@ -1,3 +1,4 @@
+import 'package:crib_hunter/Models/postingObjects.dart';
 import 'package:crib_hunter/Screens/viewPostingPage.dart';
 import 'package:crib_hunter/Views/gridWidgets.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +21,12 @@ class _TripsPageState extends State<TripsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 25.0),
+              padding: const EdgeInsets.only(top: 15.0),
               child: Text(
                 'Upcoming Trips',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  fontSize: 22,
                 ),
               ),
             ),
@@ -33,22 +34,31 @@ class _TripsPageState extends State<TripsPage> {
               padding: const EdgeInsets.only(top: 15.0, bottom: 25.0),
               child: Container(
                 height: MediaQuery.of(context).size.height / 3,
+                width: double.infinity,
                 child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: AppConstants.currentUser.getUpcomingTrips().length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
+                    Booking currentBooking =
+                        AppConstants.currentUser.getUpcomingTrips()[index];
                     return Padding(
-                      padding: const EdgeInsets.only(right: 14.0),
+                      padding: const EdgeInsets.only(right: 15.0),
                       child: Container(
                         width: MediaQuery.of(context).size.width / 2.5,
                         child: InkResponse(
                           enableFeedback: true,
-                          child: TripGridTile(),
+                          child: TripGridTile(
+                            booking: currentBooking,
+                          ),
                           onTap: () {
-                            Navigator.pushNamed(
+                            Navigator.push(
                               context,
-                              ViewPostingPage.routeName,
+                              MaterialPageRoute(
+                                builder: (context) => ViewPostingPage(
+                                  posting: currentBooking.posting,
+                                ),
+                              ),
                             );
                           },
                         ),
@@ -69,22 +79,31 @@ class _TripsPageState extends State<TripsPage> {
               padding: const EdgeInsets.only(top: 15.0, bottom: 25.0),
               child: Container(
                 height: MediaQuery.of(context).size.height / 3,
+                width: double.infinity,
                 child: ListView.builder(
-                  itemCount: 2,
+                  itemCount: AppConstants.currentUser.getPreviousTrips().length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
+                    Booking currentBooking =
+                        AppConstants.currentUser.getPreviousTrips()[index];
                     return Padding(
                       padding: const EdgeInsets.only(right: 14.0),
                       child: Container(
                         width: MediaQuery.of(context).size.width / 2.5,
                         child: InkResponse(
                           enableFeedback: true,
-                          child: TripGridTile(),
+                          child: TripGridTile(
+                            booking: currentBooking,
+                          ),
                           onTap: () {
-                            Navigator.pushNamed(
+                            Navigator.push(
                               context,
-                              ViewPostingPage.routeName,
+                              MaterialPageRoute(
+                                builder: (context) => ViewPostingPage(
+                                  posting: currentBooking.posting,
+                                ),
+                              ),
                             );
                           },
                         ),
