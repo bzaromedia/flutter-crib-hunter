@@ -10,10 +10,8 @@ import 'package:crib_hunter/Views/listWidgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'guestHomePage.dart';
 import 'package:crib_hunter/Views/textWidgets.dart';
 import 'package:flutter/material.dart';
-import 'package:crib_hunter/Models/appConstants.dart';
 
 class ViewPostingPage extends StatefulWidget {
   static final String routeName = '/viewPostingPageRoute';

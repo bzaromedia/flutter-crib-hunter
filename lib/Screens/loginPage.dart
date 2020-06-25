@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Welcome to ${AppConstants.appName}!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 32.0,
+                  fontSize: 40.0,
                 ),
                 textAlign: TextAlign.center,
               ),
